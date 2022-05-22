@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
@@ -7,7 +8,9 @@ function App() {
   return (
     <div className='max-w-screen-xl mx-auto'>
       <Header />
-      <Home />
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
       <Footer />
     </div>
   );
