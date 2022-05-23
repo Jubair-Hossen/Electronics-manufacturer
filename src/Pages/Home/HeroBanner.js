@@ -3,7 +3,7 @@ import React from 'react';
 const HeroBanner = () => {
     return (
         <div className="hero">
-            <div className="hero-content flex-col lg:flex-row-reverse">
+            <div className="hero-content flex-col md:flex-row-reverse">
                 <div className="lg:w-1/3">
                     <img className='w-screen' src="https://img.freepik.com/free-vector/computer-service-abstract-concept-illustration_335657-1897.jpg?t=st=1653201806~exp=1653202406~hmac=13e8604bbfcfd0c901f26ea400cac6ff5e0295827744e3b41c00fbdebd19ee75&w=740" alt='' />
                 </div>
