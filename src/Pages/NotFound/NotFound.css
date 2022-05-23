@@ -1,0 +1,12 @@
+.not-found-page {
+    max-width: 1240px;
+    min-height: 60vh;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.not-found-page img {
+    margin-top: -20px;
+    width: 50%;
+}

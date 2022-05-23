@@ -1,0 +1,33 @@
+.social-login .social-btn {
+    font-size: 16px;
+    width: 60%;
+    margin: 5px auto;
+    padding: 5px 10px;
+    border: 2px solid blue;
+    border-radius: 50px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.social-login .social-btn img {
+    width: 20px;
+}
+
+.social-login .error {
+    color: #ba0505;
+}
+
+@media only screen and (max-width:992px) {
+    .social-login .social-btn {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .social-login .social-btn {
+        width: 100%;
+    }
+}
