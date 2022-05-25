@@ -10,6 +10,7 @@ const ProtectedRout = ({ children }) => {
     let location = useLocation();
     if (loading) {
         return <>
+            <div className='mt-8'></div>
             <Spinner></Spinner>
             <div style={{ height: "60vh" }} className="empty-space"></div>
         </>

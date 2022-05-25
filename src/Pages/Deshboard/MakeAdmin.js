@@ -23,8 +23,7 @@ const MakeAdmin = () => {
                     <tr>
                         <th>Sl</th>
                         <th>Email</th>
-                        <th>Make Admin</th>
-                        <th>Remove User</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

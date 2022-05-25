@@ -15,6 +15,8 @@ import MyOrder from './Pages/Deshboard/MyOrder';
 import AddProduct from './Pages/Deshboard/AddProduct';
 import MakeAdmin from './Pages/Deshboard/MakeAdmin';
 import ProtectedRout from './Components/ProtectedRout';
+import RequireAdmin from './Components/RequireAdmin';
+import Purchase from './Pages/Purchase/Purchase';
 
 function App() {
   return (
@@ -22,13 +24,16 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+
         <Route path='/deshboard' element={<ProtectedRout><Deshboard /></ProtectedRout>}>
           <Route index element={<MyProfile />} />
           <Route path='my-order' element={<MyOrder />} />
           <Route path='add-review' element={<AddReview />} />
-          <Route path='add-product' element={<AddProduct />} />
-          <Route path='make-admin' element={<MakeAdmin />} />
+          <Route path='add-product' element={<RequireAdmin><AddProduct /></RequireAdmin>} />
+          <Route path='make-admin' element={<RequireAdmin><MakeAdmin /></RequireAdmin>} />
         </Route>
+
+        <Route path='/purchase/:id' element={<ProtectedRout><Purchase /></ProtectedRout>} />
         <Route path='/login' element={<LogIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/resetpassword' element={<PasswordReset />} />

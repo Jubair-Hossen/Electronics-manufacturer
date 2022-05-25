@@ -12,7 +12,7 @@ const Product = ({ product }) => {
             <p className='mb-2'>Price: ${price}/p</p>
             <p className='mb-4'>Available in Stock: {quantity}</p>
             <p className='mb-2'>Minimum Order Quantity: {minQuantity}</p>
-            <button className='btn btn-primary' onClick={() => navigate(`/inventory/${_id}`)}>Order Now</button>
+            <button className='btn btn-primary' onClick={() => navigate(`/purchase/${_id}`)}>Order Now</button>
         </div>
     );
 };
