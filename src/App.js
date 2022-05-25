@@ -17,6 +17,7 @@ import MakeAdmin from './Pages/Deshboard/MakeAdmin';
 import ProtectedRout from './Components/ProtectedRout';
 import RequireAdmin from './Components/RequireAdmin';
 import Purchase from './Pages/Purchase/Purchase';
+import UpdateProfile from './Pages/Deshboard/UpdateProfile';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
 
         <Route path='/deshboard' element={<ProtectedRout><Deshboard /></ProtectedRout>}>
           <Route index element={<MyProfile />} />
+          <Route path='edit-profile/:email' element={<UpdateProfile />} />
           <Route path='my-order' element={<MyOrder />} />
           <Route path='add-review' element={<AddReview />} />
           <Route path='add-product' element={<RequireAdmin><AddProduct /></RequireAdmin>} />

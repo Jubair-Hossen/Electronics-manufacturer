@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 
 const MyOrder = () => {
     const [user] = useAuthState(auth);
-    const { data: orders, isLoading, refetch } = useQuery('myOrders', () => fetch(`http://localhost:5000/myorders?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('myOrders', () => fetch(`https://polar-sea-81646.herokuapp.com/myorders?email=${user.email}`, {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`
@@ -21,7 +21,7 @@ const MyOrder = () => {
     }
     return (
         <div className="overflow-x-auto">
-            <h1 className="text-xl my-3">My Orders</h1>
+            <h1 className="my-2">My Orders</h1>
             <table className="table w-full">
                 <thead>
                     <tr>

@@ -9,7 +9,7 @@ import auth from '../../firebase.init';
 const Purchase = () => {
     const params = useParams();
     const id = params.id;
-    const url = `http://localhost:5000/productbyid/${id}`;
+    const url = `https://polar-sea-81646.herokuapp.com/productbyid/${id}`;
     const navigate = useNavigate();
     const { data: product, isLoading } = useQuery('product', () => fetch(url, {
         method: "GET",
@@ -57,7 +57,7 @@ const Purchase = () => {
             price: orderQuantity * product.price
         }
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://polar-sea-81646.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
