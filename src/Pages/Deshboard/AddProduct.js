@@ -1,17 +1,32 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const AddProduct = () => {
     const handleAddProduct = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const description = e.target.desc.value;
-        const price = e.target.price.value;
-        const quantity = e.target.quantity.value;
-        const minQuantity = e.target.minQuantity.value;
+        const img = e.target.img.value;
+        const price = parseInt(e.target.price.value);
+        const quantity = parseInt(e.target.quantity.value);
+        const minQuantity = parseInt(e.target.minQuantity.value);
 
-        const product = { name, description, price, quantity, minQuantity }
-        console.log(product);
-        e.target.reset();
+        const product = { name, description, img, price, quantity, minQuantity }
+
+        fetch('http://localhost:5000/product', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    e.target.reset();
+                    toast.success('Product added succesfully')
+                }
+            })
     }
     return (
         <form className='mt-5 mx-2' onSubmit={handleAddProduct}>
