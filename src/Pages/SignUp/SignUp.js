@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocilaLogin/SocialLogin';
 import Spinner from '../../Components/Spinner';
@@ -11,12 +11,15 @@ const SignUp = () => {
     const navigate = useNavigate();
     let singUpError;
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    const handleSignup = (e) => {
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const handleSignup = async (e) => {
         e.preventDefault();
+        const name = e.target.name.value;
         const email = e.target.email.value;
         const pass = e.target.pass.value;
 
-        createUserWithEmailAndPassword(email, pass)
+        await createUserWithEmailAndPassword(email, pass);
+        await updateProfile({ displayName: name });
 
     }
     if (error) {

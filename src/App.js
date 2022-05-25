@@ -8,6 +8,10 @@ import LogIn from './Pages/LogIn/LogIn';
 import SignUp from './Pages/SignUp/SignUp';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Deshboard from './Pages/Deshboard/Deshboard';
+import MyProfile from './Pages/Deshboard/MyProfile';
+import AddReview from './Pages/Deshboard/AddReview';
+import MyOrder from './Pages/Deshboard/MyOrder';
 
 function App() {
   return (
@@ -15,6 +19,11 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/deshboard' element={<Deshboard />}>
+          <Route index element={<MyProfile />} />
+          <Route path='my-order' element={<MyOrder />} />
+          <Route path='add-review' element={<AddReview />} />
+        </Route>
         <Route path='/login' element={<LogIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/resetpassword' element={<PasswordReset />} />
