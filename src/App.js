@@ -12,6 +12,7 @@ import Deshboard from './Pages/Deshboard/Deshboard';
 import MyProfile from './Pages/Deshboard/MyProfile';
 import AddReview from './Pages/Deshboard/AddReview';
 import MyOrder from './Pages/Deshboard/MyOrder';
+import AddProduct from './Pages/Deshboard/AddProduct';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route index element={<MyProfile />} />
           <Route path='my-order' element={<MyOrder />} />
           <Route path='add-review' element={<AddReview />} />
+          <Route path='add-product' element={<AddProduct />} />
         </Route>
         <Route path='/login' element={<LogIn />} />
         <Route path='/signup' element={<SignUp />} />

@@ -16,7 +16,7 @@ const Deshboard = () => {
                     <label htmlFor="my-drawer-2" className="btn btn-ghost drawer-button lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <h2 className='text-primary'>Deshboard</h2>
+                    <h2 className='text-primary font-bold'>Deshboard</h2>
                 </div>
                 <Outlet></Outlet>
 
@@ -31,6 +31,7 @@ const Deshboard = () => {
                     <li><Link to={'manage-all-orders'}>Manage All Orders</Link></li>
                     <li><Link to={'add-product'}>Add A Product</Link></li>
                     <li><Link to={'manage-products'}>Manage Products</Link></li>
+                    <li><Link to={'make-admin'}>Make Admin</Link></li>
                 </ul>
 
             </div>
