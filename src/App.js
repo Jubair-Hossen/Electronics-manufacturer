@@ -14,6 +14,7 @@ import AddReview from './Pages/Deshboard/AddReview';
 import MyOrder from './Pages/Deshboard/MyOrder';
 import AddProduct from './Pages/Deshboard/AddProduct';
 import MakeAdmin from './Pages/Deshboard/MakeAdmin';
+import ProtectedRout from './Components/ProtectedRout';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/deshboard' element={<Deshboard />}>
+        <Route path='/deshboard' element={<ProtectedRout><Deshboard /></ProtectedRout>}>
           <Route index element={<MyProfile />} />
           <Route path='my-order' element={<MyOrder />} />
           <Route path='add-review' element={<AddReview />} />
