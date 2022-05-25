@@ -13,6 +13,7 @@ import MyProfile from './Pages/Deshboard/MyProfile';
 import AddReview from './Pages/Deshboard/AddReview';
 import MyOrder from './Pages/Deshboard/MyOrder';
 import AddProduct from './Pages/Deshboard/AddProduct';
+import MakeAdmin from './Pages/Deshboard/MakeAdmin';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='my-order' element={<MyOrder />} />
           <Route path='add-review' element={<AddReview />} />
           <Route path='add-product' element={<AddProduct />} />
+          <Route path='make-admin' element={<MakeAdmin />} />
         </Route>
         <Route path='/login' element={<LogIn />} />
         <Route path='/signup' element={<SignUp />} />

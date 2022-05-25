@@ -4,21 +4,23 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocilaLogin/SocialLogin';
 import Spinner from '../../Components/Spinner';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 import './Login.css'
 
 const LogIn = () => {
     const navigate = useNavigate();
     let location = useLocation();
     let errorMessage;
-    const [user1] = useAuthState(auth);
+    // const [user1] = useAuthState(auth);
     let from = location.state?.from?.pathname || "/";
+    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(user);
+
     useEffect(() => {
-        if (user1) {
+        if (token) {
             navigate(from);
         }
-    }, [user1])
-
-    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    }, [token, from, navigate])
 
     const handleLogIn = (e) => {
         e.preventDefault();
@@ -48,7 +50,7 @@ const LogIn = () => {
                     <p>Don't have an account? <span onClick={() => navigate('/signup')}>Sign up</span></p>
                 </form>
                 <p className='error'>{errorMessage}</p>
-                <SocialLogin></SocialLogin>
+                <SocialLogin from={from}></SocialLogin>
             </div>
         </section>
     );

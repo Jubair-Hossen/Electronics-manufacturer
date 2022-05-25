@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
 import './SocialLogin.css';
 import googleLogo from '../../images/googleogo.png';
+import useToken from '../../Hooks/useToken';
+import { useNavigate } from 'react-router-dom';
 // import fblogo from '../../images/facebook.png'
 
-const SocialLogin = () => {
+const SocialLogin = ({ from }) => {
+    const navigate = useNavigate();
     let errorMessage;
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [token] = useToken(user);
     if (error) {
         errorMessage = error.message;
     }
+
+    useEffect(() => {
+        if (token) {
+            navigate(from || '/');
+        }
+    }, [token, from, navigate])
     return (
         <div className='social-login'>
             <p className='error'> {errorMessage}</p>

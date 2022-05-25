@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react';
-import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocilaLogin/SocialLogin';
 import Spinner from '../../Components/Spinner';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 import './SignUp.css'
 
 const SignUp = () => {
-    const [user1] = useAuthState(auth);
     const navigate = useNavigate();
     let singUpError;
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [token] = useToken(user);
+    if (user) {
+        console.log(user);
+    }
+
+    const [updateProfile] = useUpdateProfile(auth);
     const handleSignup = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -25,11 +30,12 @@ const SignUp = () => {
     if (error) {
         singUpError = error.message;
     }
+
     useEffect(() => {
-        if (user1) {
+        if (token) {
             navigate('/');
         }
-    }, [user1])
+    }, [token, navigate])
     return (
         <section className='container signup-page'>
             <div className="img">

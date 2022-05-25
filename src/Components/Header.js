@@ -6,6 +6,10 @@ import auth from '../firebase.init';
 
 const Header = () => {
     const [user] = useAuthState(auth);
+    const handleSignOut = () => {
+        signOut(auth)
+        localStorage.removeItem('token')
+    }
     return (
         <div className="navbar mt-2 bg-base-100 shadow-md sticky top-0 z-50">
             <div className="navbar-start">
@@ -22,7 +26,7 @@ const Header = () => {
                             user ?
                                 <>
                                     <li><Link to={'/deshboard'}>Deshboard</Link></li>
-                                    <li><Link onClick={() => signOut(auth)} to={''}>Logout</Link></li>
+                                    <li><Link onClick={handleSignOut} to={''}>Logout</Link></li>
                                 </>
                                 : <li><Link to={'/login'}>Login</Link></li>
                         }
@@ -39,7 +43,7 @@ const Header = () => {
                         user ?
                             <>
                                 <li><Link to={'/deshboard'}>Deshboard</Link></li>
-                                <li><Link onClick={() => signOut(auth)} to={''}>Logout</Link></li>
+                                <li><Link onClick={handleSignOut} to={''}>Logout</Link></li>
                             </>
                             : <li><Link to={'/login'}>Login</Link></li>
                     }
