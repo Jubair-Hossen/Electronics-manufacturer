@@ -18,6 +18,7 @@ import ProtectedRout from './Components/ProtectedRout';
 import RequireAdmin from './Components/RequireAdmin';
 import Purchase from './Pages/Purchase/Purchase';
 import UpdateProfile from './Pages/Deshboard/UpdateProfile';
+import ManageProduct from './Pages/Deshboard/ManageProduct';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='my-order' element={<MyOrder />} />
           <Route path='add-review' element={<AddReview />} />
           <Route path='add-product' element={<RequireAdmin><AddProduct /></RequireAdmin>} />
+          <Route path='manage-products' element={<RequireAdmin><ManageProduct /></RequireAdmin>} />
           <Route path='make-admin' element={<RequireAdmin><MakeAdmin /></RequireAdmin>} />
         </Route>
 

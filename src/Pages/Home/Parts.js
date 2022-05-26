@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Product from '../../Components/Product';
 import Spinner from '../../Components/Spinner';
 
 const Parts = () => {
     const [parts, setParts] = useState([]);
-    const navigate = useNavigate();
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
