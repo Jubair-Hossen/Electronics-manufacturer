@@ -1,7 +1,11 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const UserRow = ({ user, index, refetch }) => {
+    const navigate = useNavigate();
     const makeAdmin = () => {
         fetch(`http://localhost:5000/makeadmin/${user.email}`, {
             method: 'PUT',
@@ -12,6 +16,11 @@ const UserRow = ({ user, index, refetch }) => {
             .then(res => {
                 if (res.status === 403) {
                     toast.error("fail to make admin");
+                }
+                if (res.status === 401 || res.status === 403) {
+                    navigate('/login');
+                    signOut(auth);
+                    localStorage.removeItem('token')
                 }
                 return res.json()
             })

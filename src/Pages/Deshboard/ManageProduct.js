@@ -61,8 +61,8 @@ const ManageProduct = () => {
                     <div className="modal-box">
                         <h3 className="font-bold text-lg">Are you sure?? You want to delete</h3>
                         <div className="modal-action">
-                            <label for="delete-modal" className="btn btn-sm">Cancel</label>
-                            <label onClick={() => handleDelete(deleteId)} for="delete-modal" className="btn btn-sm bg-red-700">Delete</label>
+                            <label htmlFor="delete-modal" className="btn btn-sm">Cancel</label>
+                            <label onClick={() => handleDelete(deleteId)} htmlFor="delete-modal" className="btn btn-sm bg-red-700">Delete</label>
                         </div>
                     </div>
                 </div>

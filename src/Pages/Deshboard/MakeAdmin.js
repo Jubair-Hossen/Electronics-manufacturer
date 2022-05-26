@@ -2,16 +2,27 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import Spinner from '../../Components/Spinner';
 import UserRow from './UserRow';
+import { signOut } from 'firebase/auth';
+import auth from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
 
 const MakeAdmin = () => {
+    const navigate = useNavigate();
     const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`
         }
     })
-        .then(res => res.json()
-        ));
+        .then(res => {
+            if (res.status === 401 || res.status === 403) {
+                navigate('/login');
+                signOut(auth);
+                localStorage.removeItem('token')
+            }
+            return res.json();
+        })
+    );
 
     if (isLoading) {
         return <Spinner></Spinner>
@@ -28,7 +39,7 @@ const MakeAdmin = () => {
                 </thead>
                 <tbody>
                     {
-                        users.map((user, index) => <UserRow
+                        users?.map((user, index) => <UserRow
                             key={user._id}
                             index={index}
                             user={user}

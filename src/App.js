@@ -21,6 +21,7 @@ import UpdateProfile from './Pages/Deshboard/UpdateProfile';
 import ManageProduct from './Pages/Deshboard/ManageProduct';
 import ManageOrders from './Pages/Deshboard/ManageOrders';
 import NotFound from './Pages/NotFound/NotFound';
+import Myprotfolio from './Pages/Myprotfolio/Myprotfolio';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/my-portfolio' element={<Myprotfolio />} />
 
         <Route path='/deshboard' element={<ProtectedRout><Deshboard /></ProtectedRout>}>
           <Route index element={<MyProfile />} />

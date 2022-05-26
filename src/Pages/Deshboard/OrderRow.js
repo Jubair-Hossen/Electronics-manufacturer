@@ -17,7 +17,7 @@ const OrderRow = ({ index, order, setDeleteId }) => {
             <td>
                 {
                     order.status === "unpaid" && <>
-                        <label onClick={() => setDeleteId(_id)} for="delete-order-modal">
+                        <label onClick={() => setDeleteId(_id)} htmlFor="delete-order-modal">
                             <FontAwesomeIcon className='text-lg mr-2 cursor-pointer text-red-700' icon={faTrashAlt} />
                         </label>
                         <button className="btn btn-xs">Pay</button>

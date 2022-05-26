@@ -1,7 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const AddProduct = () => {
+    const navigate = useNavigate();
     const handleAddProduct = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -20,7 +24,14 @@ const AddProduct = () => {
             },
             body: JSON.stringify(product)
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    navigate('/login');
+                    signOut(auth);
+                    localStorage.removeItem('token')
+                }
+                res.json()
+            })
             .then(data => {
                 if (data.insertedId) {
                     e.target.reset();
