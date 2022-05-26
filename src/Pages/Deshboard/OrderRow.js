@@ -1,21 +1,10 @@
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-const OrderRow = ({ index, order, refetch }) => {
+const OrderRow = ({ index, order, setDeleteId }) => {
     const { productName, orderQuantity, price, status, _id } = order;
-    const handleCancel = () => {
-        const confirm = window.confirm('Are You Sure? You Want to delete');
-        if (confirm) {
-            fetch(`http://localhost:5000/order/${_id}`, {
-                method: 'DELETE',
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount) {
-                        refetch()
-                    }
-                })
-        }
-    }
+
     return (
         <tr>
             <th>{index + 1}</th>
@@ -28,7 +17,9 @@ const OrderRow = ({ index, order, refetch }) => {
             <td>
                 {
                     order.status === "unpaid" && <>
-                        <button onClick={handleCancel} className="btn btn-xs mr-3">Cancel</button>
+                        <label onClick={() => setDeleteId(_id)} for="delete-order-modal">
+                            <FontAwesomeIcon className='text-lg mr-2 cursor-pointer text-red-700' icon={faTrashAlt} />
+                        </label>
                         <button className="btn btn-xs">Pay</button>
                     </>
                 }

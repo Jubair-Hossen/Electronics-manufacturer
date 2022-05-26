@@ -27,6 +27,7 @@ const Header = () => {
                                 <>
                                     <li><Link to={'/deshboard'}>Deshboard</Link></li>
                                     <li><Link onClick={handleSignOut} to={''}>Logout</Link></li>
+                                    <li className='text-primary font-bold'><Link to={'/deshboard'}>{user?.displayName}</Link></li>
                                 </>
                                 : <li><Link to={'/login'}>Login</Link></li>
                         }
@@ -44,6 +45,7 @@ const Header = () => {
                             <>
                                 <li><Link to={'/deshboard'}>Deshboard</Link></li>
                                 <li><Link onClick={handleSignOut} to={''}>Logout</Link></li>
+                                <li className='text-primary font-bold'><Link to={'/deshboard'}>{user?.displayName}</Link></li>
                             </>
                             : <li><Link to={'/login'}>Login</Link></li>
                     }

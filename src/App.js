@@ -20,6 +20,7 @@ import Purchase from './Pages/Purchase/Purchase';
 import UpdateProfile from './Pages/Deshboard/UpdateProfile';
 import ManageProduct from './Pages/Deshboard/ManageProduct';
 import ManageOrders from './Pages/Deshboard/ManageOrders';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path='/login' element={<LogIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/resetpassword' element={<PasswordReset />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer />
