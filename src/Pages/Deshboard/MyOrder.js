@@ -8,7 +8,7 @@ import auth from '../../firebase.init';
 const MyOrder = () => {
     const [user] = useAuthState(auth);
     const [deleteId, setDeleteId] = useState('');
-    const { data: orders, isLoading, refetch } = useQuery('myOrders', () => fetch(`http://localhost:5000/myorders?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('myOrders', () => fetch(`https://polar-sea-81646.herokuapp.com/myorders?email=${user.email}`, {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`
@@ -22,7 +22,7 @@ const MyOrder = () => {
     }
 
     const handleCancel = (id) => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://polar-sea-81646.herokuapp.com/order/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

@@ -5,7 +5,7 @@ import ProductRow from './ProductRow';
 import { toast } from 'react-toastify';
 
 const ManageProduct = () => {
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/products', {
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('https://polar-sea-81646.herokuapp.com/products', {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`
@@ -16,7 +16,7 @@ const ManageProduct = () => {
 
     const [deleteId, setDeleteId] = useState('');
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://polar-sea-81646.herokuapp.com/product/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

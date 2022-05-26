@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MakeAdmin = () => {
     const navigate = useNavigate();
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://polar-sea-81646.herokuapp.com/users', {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`

@@ -20,7 +20,7 @@ const AddReview = () => {
             setError('')
         }
 
-        fetch('http://localhost:5000/addreview', {
+        fetch('https://polar-sea-81646.herokuapp.com/addreview', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

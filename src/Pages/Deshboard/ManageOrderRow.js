@@ -7,7 +7,7 @@ const ManageOrderRow = ({ index, order, refetch, setDeleteId }) => {
 
     const handleShipped = () => {
 
-        fetch(`http://localhost:5000/changestatus/${_id}`, {
+        fetch(`https://polar-sea-81646.herokuapp.com/changestatus/${_id}`, {
             method: 'PUT',
         })
             .then(res => res.json())

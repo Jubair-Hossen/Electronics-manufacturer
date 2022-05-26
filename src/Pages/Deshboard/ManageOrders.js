@@ -5,7 +5,7 @@ import ManageOrderRow from './ManageOrderRow';
 
 const ManageOrders = () => {
     const [deleteId, setDeleteId] = useState('');
-    const { data: orders, isLoading, refetch } = useQuery('allOrders', () => fetch(`http://localhost:5000/allorders`, {
+    const { data: orders, isLoading, refetch } = useQuery('allOrders', () => fetch(`https://polar-sea-81646.herokuapp.com/allorders`, {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`
@@ -19,7 +19,7 @@ const ManageOrders = () => {
     }
 
     const handleCancel = (id) => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://polar-sea-81646.herokuapp.com/order/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

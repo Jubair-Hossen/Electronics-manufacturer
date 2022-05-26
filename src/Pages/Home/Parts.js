@@ -5,7 +5,7 @@ import Spinner from '../../Components/Spinner';
 const Parts = () => {
     const [parts, setParts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://polar-sea-81646.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setParts(data))
     }, [])
