@@ -54,7 +54,8 @@ const Purchase = () => {
             productId: product._id,
             productName: product.name,
             orderQuantity,
-            price: orderQuantity * product.price
+            price: orderQuantity * product.price,
+            status: 'unpaid',
         }
 
         fetch('http://localhost:5000/order', {

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const OrderRow = ({ index, order, refetch }) => {
-    const { productName, orderQuantity, price, status, _id } = order;
+const ManageOrderRow = ({ index, order, refetch }) => {
+    const { productName, orderQuantity, email, status, _id } = order;
     const handleCancel = () => {
         const confirm = window.confirm('Are You Sure? You Want to delete');
         if (confirm) {
@@ -16,25 +16,39 @@ const OrderRow = ({ index, order, refetch }) => {
                 })
         }
     }
+    const handleShipped = () => {
+
+        fetch(`http://localhost:5000/changestatus/${_id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch()
+                }
+            })
+
+    }
+
     return (
         <tr>
             <th>{index + 1}</th>
             <td>{productName}</td>
             <td>{orderQuantity}</td>
-            <td>${price}</td>
+            <td>{email}</td>
             <td>
                 {<p className='text-gray-400'>{status}</p>}
             </td>
             <td>
                 {
-                    order.status === "unpaid" && <>
-                        <button onClick={handleCancel} className="btn btn-xs mr-3">Cancel</button>
-                        <button className="btn btn-xs">Pay</button>
-                    </>
+                    order.status === "unpaid" && <button onClick={handleCancel} className="btn btn-xs mr-3">Cancel</button>
+                }
+                {
+                    order.status === "pending" && <button onClick={handleShipped} className="btn btn-xs">shipped order</button>
                 }
             </td>
         </tr >
     );
 };
 
-export default OrderRow;
+export default ManageOrderRow;

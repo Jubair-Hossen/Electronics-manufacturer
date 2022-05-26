@@ -1,13 +1,10 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import Spinner from '../../Components/Spinner';
-import OrderRow from './OrderRow';
-import auth from '../../firebase.init';
+import ManageOrderRow from './ManageOrderRow';
 
-const MyOrder = () => {
-    const [user] = useAuthState(auth);
-    const { data: orders, isLoading, refetch } = useQuery('myOrders', () => fetch(`http://localhost:5000/myorders?email=${user.email}`, {
+const ManageOrders = () => {
+    const { data: orders, isLoading, refetch } = useQuery('allOrders', () => fetch(`http://localhost:5000/allorders`, {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`
@@ -28,19 +25,19 @@ const MyOrder = () => {
                         <th>Sl</th>
                         <th>Product</th>
                         <th>Quantity</th>
-                        <th>Total Price</th>
+                        <th>Buyer</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        orders.map((order, index) => <OrderRow
+                        orders.map((order, index) => <ManageOrderRow
                             key={order._id}
                             index={index}
                             order={order}
                             refetch={refetch}
-                        ></OrderRow>)
+                        ></ManageOrderRow>)
                     }
                 </tbody>
             </table>
@@ -48,4 +45,4 @@ const MyOrder = () => {
     );
 };
 
-export default MyOrder;
+export default ManageOrders;

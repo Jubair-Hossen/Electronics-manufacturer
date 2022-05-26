@@ -19,6 +19,7 @@ import RequireAdmin from './Components/RequireAdmin';
 import Purchase from './Pages/Purchase/Purchase';
 import UpdateProfile from './Pages/Deshboard/UpdateProfile';
 import ManageProduct from './Pages/Deshboard/ManageProduct';
+import ManageOrders from './Pages/Deshboard/ManageOrders';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='edit-profile/:email' element={<UpdateProfile />} />
           <Route path='my-order' element={<MyOrder />} />
           <Route path='add-review' element={<AddReview />} />
+          <Route path='manage-all-orders' element={<RequireAdmin><ManageOrders /></RequireAdmin>} />
           <Route path='add-product' element={<RequireAdmin><AddProduct /></RequireAdmin>} />
           <Route path='manage-products' element={<RequireAdmin><ManageProduct /></RequireAdmin>} />
           <Route path='make-admin' element={<RequireAdmin><MakeAdmin /></RequireAdmin>} />
