@@ -7,7 +7,7 @@ const Parts = () => {
     const [parts, setParts] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('https://polar-sea-81646.herokuapp.com/products')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setParts(data))
     }, [])

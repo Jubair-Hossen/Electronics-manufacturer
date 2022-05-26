@@ -5,7 +5,7 @@ const OrderRow = ({ index, order, refetch }) => {
     const handleCancel = () => {
         const confirm = window.confirm('Are You Sure? You Want to delete');
         if (confirm) {
-            fetch(`https://polar-sea-81646.herokuapp.com/order/${_id}`, {
+            fetch(`http://localhost:5000/order/${_id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

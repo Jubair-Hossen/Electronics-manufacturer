@@ -10,7 +10,7 @@ import Spinner from '../../Components/Spinner';
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const { data: author, isLoading } = useQuery('author', () => fetch(`https://polar-sea-81646.herokuapp.com/userbyemail?email=${user?.email}`, {
+    const { data: author, isLoading } = useQuery('author', () => fetch(`http://localhost:5000/userbyemail?email=${user?.email}`, {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`

@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 
 const MyOrder = () => {
     const [user] = useAuthState(auth);
-    const { data: orders, isLoading, refetch } = useQuery('myOrders', () => fetch(`https://polar-sea-81646.herokuapp.com/myorders?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('myOrders', () => fetch(`http://localhost:5000/myorders?email=${user.email}`, {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`

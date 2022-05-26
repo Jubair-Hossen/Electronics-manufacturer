@@ -13,7 +13,7 @@ const AddProduct = () => {
 
         const product = { name, description, img, price, quantity, minQuantity }
 
-        fetch('https://polar-sea-81646.herokuapp.com/product', {
+        fetch('http://localhost:5000/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

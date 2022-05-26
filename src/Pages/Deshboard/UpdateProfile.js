@@ -15,7 +15,7 @@ const UpdateProfile = () => {
         const linkdin = e.target.linkdin.value;
         const updateProfile = { education, address, phone, linkdin, profilePic };
 
-        fetch(`https://polar-sea-81646.herokuapp.com/updateprofile/${user?.email}`, {
+        fetch(`http://localhost:5000/updateprofile/${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

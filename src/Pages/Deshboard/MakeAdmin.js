@@ -4,7 +4,7 @@ import Spinner from '../../Components/Spinner';
 import UserRow from './UserRow';
 
 const MakeAdmin = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://polar-sea-81646.herokuapp.com/users', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
         method: "GET",
         headers: {
             'authorization': `Beares ${localStorage.getItem('token')}`

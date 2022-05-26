@@ -12,9 +12,6 @@ const SignUp = () => {
     let singUpError;
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [token] = useToken(user);
-    if (user) {
-        console.log(user);
-    }
 
     const [updateProfile] = useUpdateProfile(auth);
     const handleSignup = async (e) => {
